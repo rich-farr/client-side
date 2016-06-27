@@ -11,12 +11,21 @@ xhr.get(endpoint, function (err, data) {
 
   // In case you're curious
   console.log("CLANG", data.body) // FYI: data.body is a string
-  var anObj = JSON.parse(data.body)
+  var obj = JSON.parse(data.body)
+  var fixData = function (obj) {
+  	obj.name = obj.name.toUpperCase()
+  	obj.altitude = parseInt(obj.altitude.toFixed(0))
+  	obj.velocity = parseInt(obj.velocity.toFixed(0))
+  }
+
+  console.log("AUGH!", fixData)
+
+  //var anObj = JSON.parse(data.body)
 
   // Replace 'Space' below with the response
   var target = document.getElementById('heading')
   target.innerHTML = greeting({name: ', person that is interested in science!'})
 
   var position = document.getElementById('content')
-  position.innerHTML = iss(anObj)
+  position.innerHTML = iss(fixData)
 })
