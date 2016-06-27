@@ -11,11 +11,12 @@ xhr.get(endpoint, function (err, data) {
 
   // In case you're curious
   console.log("CLANG", data.body) // FYI: data.body is a string
+  var obj = JSON.parse(data.body)
 
   // Replace 'Space' below with the response
-  var target = document.getElementsByTagName('h1')
+  var target = document.getElementById('heading')
   target.innerHTML = greeting({name: 'Captain Rich A. Farr (where the "A" is for "Awesome")'})
 
   var position = document.getElementById('content')
-  position.innerHTML = iss(data.body)
+  position.innerHTML = iss(obj)
 })
