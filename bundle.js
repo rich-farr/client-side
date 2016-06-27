@@ -1,6 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var xhr=require("xhr"),greeting=require("./views/greeting.hbs"),iss=require("./views/iss.hbs"),players=require("./views/players.hbs"),endpoint="https://api.wheretheiss.at/v1/satellites/25544",myApi="http://localhost:3000/players";xhr.get(endpoint,function(e,r){e&&console.error(e);var n=JSON.parse(r.body),t=document.getElementById("heading");t.innerHTML=greeting({name:", person that is interested in science!"});var s=document.getElementById("content");s.innerHTML=iss(n)}),xhr.get(myApi,function(e,r){e&&console.error(e),console.log("BOING",r.body);var n=JSON.parse(r.body),t=document.getElementById("player");t.innerHTML=players(n)});
-},{"./views/greeting.hbs":30,"./views/iss.hbs":31,"./views/players.hbs":32,"xhr":27}],2:[function(require,module,exports){
+var xhr=require("xhr"),greeting=require("./views/greeting.hbs"),iss=require("./views/iss.hbs"),endpoint="https://api.wheretheiss.at/v1/satellites/25544";xhr.get(endpoint,function(e,n){e&&console.error(e);var t=JSON.parse(n.body),i=document.getElementById("heading");i.innerHTML=greeting({name:", person that is interested in science!"});var r=document.getElementById("content");r.innerHTML=iss(t)});
+},{"./views/greeting.hbs":30,"./views/iss.hbs":31,"xhr":27}],2:[function(require,module,exports){
 function forEach(r,t,o){if(!isFunction(t))throw new TypeError("iterator must be a function");arguments.length<3&&(o=this),"[object Array]"===toString.call(r)?forEachArray(r,t,o):"string"==typeof r?forEachString(r,t,o):forEachObject(r,t,o)}function forEachArray(r,t,o){for(var n=0,a=r.length;n<a;n++)hasOwnProperty.call(r,n)&&t.call(o,r[n],n,r)}function forEachString(r,t,o){for(var n=0,a=r.length;n<a;n++)t.call(o,r.charAt(n),n,r)}function forEachObject(r,t,o){for(var n in r)hasOwnProperty.call(r,n)&&t.call(o,r[n],n,r)}var isFunction=require("is-function");module.exports=forEach;var toString=Object.prototype.toString,hasOwnProperty=Object.prototype.hasOwnProperty;
 
 },{"is-function":24}],3:[function(require,module,exports){
@@ -68,12 +68,11 @@ function forEach(r,t,o){if(!isFunction(t))throw new TypeError("iterator must be 
 module.exports=require("./dist/cjs/handlebars.runtime")["default"];
 },{"./dist/cjs/handlebars.runtime":4}],23:[function(require,module,exports){
 module.exports=require("handlebars/runtime")["default"];
-
 },{"handlebars/runtime":22}],24:[function(require,module,exports){
 function isFunction(o){var t=toString.call(o);return"[object Function]"===t||"function"==typeof o&&"[object RegExp]"!==t||"undefined"!=typeof window&&(o===window.setTimeout||o===window.alert||o===window.confirm||o===window.prompt)}module.exports=isFunction;var toString=Object.prototype.toString;
+
 },{}],25:[function(require,module,exports){
 var trim=require("trim"),forEach=require("for-each"),isArray=function(r){return"[object Array]"===Object.prototype.toString.call(r)};module.exports=function(r){if(!r)return{};var e={};return forEach(trim(r).split("\n"),function(r){var t=r.indexOf(":"),i=trim(r.slice(0,t)).toLowerCase(),o=trim(r.slice(t+1));"undefined"==typeof e[i]?e[i]=o:isArray(e[i])?e[i].push(o):e[i]=[e[i],o]}),e};
-
 },{"for-each":2,"trim":26}],26:[function(require,module,exports){
 function trim(r){return r.replace(/^\s*|\s*$/g,"")}exports=module.exports=trim,exports.left=function(r){return r.replace(/^\s*/,"")},exports.right=function(r){return r.replace(/\s*$/,"")};
 
@@ -89,7 +88,4 @@ var HandlebarsCompiler=require("hbsfy/runtime");module.exports=HandlebarsCompile
 
 },{"hbsfy/runtime":23}],31:[function(require,module,exports){
 var HandlebarsCompiler=require("hbsfy/runtime");module.exports=HandlebarsCompiler.template({compiler:[7,">= 4.0.0"],main:function(l,t,i,a,e){var n,u=null!=t?t:{},s=i.helperMissing,o="function",d=l.escapeExpression;return"<p>The "+d((n=null!=(n=i.name||(null!=t?t.name:t))?n:s,typeof n===o?n.call(u,{name:"name",hash:{},data:e}):n))+" is in possession of these sweet stats:\n\t<ul>\n\t\t<li>Latitude: "+d((n=null!=(n=i.latitude||(null!=t?t.latitude:t))?n:s,typeof n===o?n.call(u,{name:"latitude",hash:{},data:e}):n))+"</li>\n\t\t<li>Longitude: "+d((n=null!=(n=i.longitude||(null!=t?t.longitude:t))?n:s,typeof n===o?n.call(u,{name:"longitude",hash:{},data:e}):n))+"</li>\n\t\t<li>Altitude: "+d((n=null!=(n=i.altitude||(null!=t?t.altitude:t))?n:s,typeof n===o?n.call(u,{name:"altitude",hash:{},data:e}):n))+" "+d((n=null!=(n=i.units||(null!=t?t.units:t))?n:s,typeof n===o?n.call(u,{name:"units",hash:{},data:e}):n))+"</li>\n\t\t<li>Velocity: "+d((n=null!=(n=i.velocity||(null!=t?t.velocity:t))?n:s,typeof n===o?n.call(u,{name:"velocity",hash:{},data:e}):n))+" km/h (holy freakin' crap!)</li>\n\t\t<li>Visibility: "+d((n=null!=(n=i.visibility||(null!=t?t.visibility:t))?n:s,typeof n===o?n.call(u,{name:"visibility",hash:{},data:e}):n))+"</li>\n\t</ul>\n</p>"},useData:!0});
-
-},{"hbsfy/runtime":23}],32:[function(require,module,exports){
-var HandlebarsCompiler=require("hbsfy/runtime");module.exports=HandlebarsCompiler.template({compiler:[7,">= 4.0.0"],main:function(e,a,n,l,r){var t,s=null!=a?a:{},u=n.helperMissing,m="function",i=e.escapeExpression;return"<p>"+i((t=null!=(t=n.name||(null!=a?a.name:a))?t:u,typeof t===m?t.call(s,{name:"name",hash:{},data:r}):t))+" is the "+i((t=null!=(t=n.type||(null!=a?a.type:a))?t:u,typeof t===m?t.call(s,{name:"type",hash:{},data:r}):t))+" for the Cardinals and his shirt number is "+i((t=null!=(t=n.number||(null!=a?a.number:a))?t:u,typeof t===m?t.call(s,{name:"number",hash:{},data:r}):t))+"</p>"},useData:!0});
 },{"hbsfy/runtime":23}]},{},[1]);
