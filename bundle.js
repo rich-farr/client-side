@@ -1,6 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var xhr=require("xhr"),greeting=require("./views/greeting.hbs"),endpoint="https://api.wheretheiss.at/v1/satellites";xhr.get(endpoint,function(e,r){e&&console.error(e),console.log(r.body);var n=document.getElementsByTagName("main")[0];n.innerHTML=greeting({name:'Captain Rich A. Farr (where the "A" is for "Awesome")'})});
-},{"./views/greeting.hbs":30,"xhr":27}],2:[function(require,module,exports){
+var xhr=require("xhr"),greeting=require("./views/greeting.hbs"),iss=require("./views/iss.hbs"),endpoint="https://api.wheretheiss.at/v1/satellites";xhr.get(endpoint,function(e,r){e&&console.error(e),console.log("CLANG",r.body);var i=document.getElementsByTagName("h1");i.innerHTML=greeting({name:'Captain Rich A. Farr (where the "A" is for "Awesome")'})});
+},{"./views/greeting.hbs":30,"./views/iss.hbs":31,"xhr":27}],2:[function(require,module,exports){
 function forEach(r,t,o){if(!isFunction(t))throw new TypeError("iterator must be a function");arguments.length<3&&(o=this),"[object Array]"===toString.call(r)?forEachArray(r,t,o):"string"==typeof r?forEachString(r,t,o):forEachObject(r,t,o)}function forEachArray(r,t,o){for(var n=0,a=r.length;n<a;n++)hasOwnProperty.call(r,n)&&t.call(o,r[n],n,r)}function forEachString(r,t,o){for(var n=0,a=r.length;n<a;n++)t.call(o,r.charAt(n),n,r)}function forEachObject(r,t,o){for(var n in r)hasOwnProperty.call(r,n)&&t.call(o,r[n],n,r)}var isFunction=require("is-function");module.exports=forEach;var toString=Object.prototype.toString,hasOwnProperty=Object.prototype.hasOwnProperty;
 
 },{"is-function":24}],3:[function(require,module,exports){
@@ -85,4 +85,7 @@ function extend(){for(var r={},e=0;e<arguments.length;e++){var t=arguments[e];fo
 
 },{}],30:[function(require,module,exports){
 var HandlebarsCompiler=require("hbsfy/runtime");module.exports=HandlebarsCompiler.template({compiler:[7,">= 4.0.0"],main:function(e,a,n,l,r){var i;return"<h1>Hello "+e.escapeExpression((i=null!=(i=n.name||(null!=a?a.name:a))?i:n.helperMissing,"function"==typeof i?i.call(null!=a?a:{},{name:"name",hash:{},data:r}):i))+"!</h1>\n"},useData:!0});
+
+},{"hbsfy/runtime":23}],31:[function(require,module,exports){
+var HandlebarsCompiler=require("hbsfy/runtime");module.exports=HandlebarsCompiler.template({compiler:[7,">= 4.0.0"],main:function(e,a,l,n,i){var t,r=null!=a?a:{},s=l.helperMissing,m="function",p=e.escapeExpression;return"<p>The "+p((t=null!=(t=l.name||(null!=a?a.name:a))?t:s,typeof t===m?t.call(r,{name:"name",hash:{},data:i}):t))+" is a thing that has the id: "+p((t=null!=(t=l.id||(null!=a?a.id:a))?t:s,typeof t===m?t.call(r,{name:"id",hash:{},data:i}):t))+"!</p>"},useData:!0});
 },{"hbsfy/runtime":23}]},{},[1]);

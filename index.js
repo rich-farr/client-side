@@ -1,5 +1,6 @@
 var xhr = require('xhr')
 var greeting = require('./views/greeting.hbs')
+var iss = require('./views/iss.hbs')
 
 var endpoint = 'https://api.wheretheiss.at/v1/satellites'
 
@@ -9,9 +10,12 @@ xhr.get(endpoint, function (err, data) {
   }
 
   // In case you're curious
-  console.log(data.body) // FYI: data.body is a string
+  console.log("CLANG", data.body) // FYI: data.body is a string
 
   // Replace 'Space' below with the response
-  var target = document.getElementsByTagName('main')[0]
+  var target = document.getElementsByTagName('h1')
   target.innerHTML = greeting({name: 'Captain Rich A. Farr (where the "A" is for "Awesome")'})
+
+  // var position = document.getElementById('content')
+  // target.innerHTML = iss({name: 'Captain Rich A. Farr (where the "A" is for "Awesome")'})
 })
