@@ -70,9 +70,9 @@ module.exports=require("./dist/cjs/handlebars.runtime")["default"];
 module.exports=require("handlebars/runtime")["default"];
 },{"handlebars/runtime":22}],24:[function(require,module,exports){
 function isFunction(o){var t=toString.call(o);return"[object Function]"===t||"function"==typeof o&&"[object RegExp]"!==t||"undefined"!=typeof window&&(o===window.setTimeout||o===window.alert||o===window.confirm||o===window.prompt)}module.exports=isFunction;var toString=Object.prototype.toString;
+
 },{}],25:[function(require,module,exports){
 var trim=require("trim"),forEach=require("for-each"),isArray=function(r){return"[object Array]"===Object.prototype.toString.call(r)};module.exports=function(r){if(!r)return{};var e={};return forEach(trim(r).split("\n"),function(r){var t=r.indexOf(":"),i=trim(r.slice(0,t)).toLowerCase(),o=trim(r.slice(t+1));"undefined"==typeof e[i]?e[i]=o:isArray(e[i])?e[i].push(o):e[i]=[e[i],o]}),e};
-
 },{"for-each":2,"trim":26}],26:[function(require,module,exports){
 function trim(r){return r.replace(/^\s*|\s*$/g,"")}exports=module.exports=trim,exports.left=function(r){return r.replace(/^\s*/,"")},exports.right=function(r){return r.replace(/\s*$/,"")};
 
@@ -87,5 +87,5 @@ function extend(){for(var r={},e=0;e<arguments.length;e++){var t=arguments[e];fo
 var HandlebarsCompiler=require("hbsfy/runtime");module.exports=HandlebarsCompiler.template({compiler:[7,">= 4.0.0"],main:function(e,a,n,l,r){var i;return"<h1>Hello "+e.escapeExpression((i=null!=(i=n.name||(null!=a?a.name:a))?i:n.helperMissing,"function"==typeof i?i.call(null!=a?a:{},{name:"name",hash:{},data:r}):i))+"!</h1>\n"},useData:!0});
 
 },{"hbsfy/runtime":23}],31:[function(require,module,exports){
-var HandlebarsCompiler=require("hbsfy/runtime");module.exports=HandlebarsCompiler.template({compiler:[7,">= 4.0.0"],main:function(e,a,l,n,i){var t,r=null!=a?a:{},s=l.helperMissing,m="function",p=e.escapeExpression;return"<p>The "+p((t=null!=(t=l.name||(null!=a?a.name:a))?t:s,typeof t===m?t.call(r,{name:"name",hash:{},data:i}):t))+" is a thing that has the id: "+p((t=null!=(t=l.id||(null!=a?a.id:a))?t:s,typeof t===m?t.call(r,{name:"id",hash:{},data:i}):t))+"!</p>"},useData:!0});
+var HandlebarsCompiler=require("hbsfy/runtime");module.exports=HandlebarsCompiler.template({compiler:[7,">= 4.0.0"],main:function(l,t,i,a,e){var n,u=null!=t?t:{},s=i.helperMissing,o="function",d=l.escapeExpression;return"<p>The "+d((n=null!=(n=i.name||(null!=t?t.name:t))?n:s,typeof n===o?n.call(u,{name:"name",hash:{},data:e}):n))+" is in possession of these sweet stats:\n\t<ul>\n\t\t<li>Latitude: "+d((n=null!=(n=i.latitude||(null!=t?t.latitude:t))?n:s,typeof n===o?n.call(u,{name:"latitude",hash:{},data:e}):n))+"</li>\n\t\t<li>Longitude: "+d((n=null!=(n=i.longitude||(null!=t?t.longitude:t))?n:s,typeof n===o?n.call(u,{name:"longitude",hash:{},data:e}):n))+"</li>\n\t\t<li>Altitude: "+d((n=null!=(n=i.altitude||(null!=t?t.altitude:t))?n:s,typeof n===o?n.call(u,{name:"altitude",hash:{},data:e}):n))+" "+d((n=null!=(n=i.units||(null!=t?t.units:t))?n:s,typeof n===o?n.call(u,{name:"units",hash:{},data:e}):n))+"</li>\n\t\t<li>Velocity: "+d((n=null!=(n=i.velocity||(null!=t?t.velocity:t))?n:s,typeof n===o?n.call(u,{name:"velocity",hash:{},data:e}):n))+" km/h (holy freakin' crap!)</li>\n\t\t<li>Visibility: "+d((n=null!=(n=i.visibility||(null!=t?t.visibility:t))?n:s,typeof n===o?n.call(u,{name:"visibility",hash:{},data:e}):n))+"</li>\n\t</ul>\n</p>"},useData:!0});
 },{"hbsfy/runtime":23}]},{},[1]);
