@@ -15,7 +15,7 @@ xhr.get(endpoint, function (err, data) {
 
   // Replace 'Space' below with the response
   var target = document.getElementById('heading')
-  target.innerHTML = greeting({name: 'Captain Rich A. Farr (where the "A" is for "Awesome")'})
+  target.innerHTML = greeting({name: ', person that is interested in science!'})
 
   var position = document.getElementById('content')
   position.innerHTML = iss(obj)
