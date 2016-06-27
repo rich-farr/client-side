@@ -16,6 +16,6 @@ xhr.get(endpoint, function (err, data) {
   var target = document.getElementsByTagName('h1')
   target.innerHTML = greeting({name: 'Captain Rich A. Farr (where the "A" is for "Awesome")'})
 
-  // var position = document.getElementById('content')
-  // target.innerHTML = iss({name: 'Captain Rich A. Farr (where the "A" is for "Awesome")'})
+  var position = document.getElementById('content')
+  position.innerHTML = iss(data.body)
 })
