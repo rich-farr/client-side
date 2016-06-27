@@ -33,5 +33,5 @@ xhr.get(myApi, function (err, data) {
   var otherObj = JSON.parse(data.body)
 
   var addPlayer = document.getElementById('player')
-  position.innerHTML = players(otherObj)
+  addPlayer.innerHTML = players(otherObj)
 })
