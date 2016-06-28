@@ -18,7 +18,9 @@ xhr.get(endpoint, function (err, data) {
   	obj.velocity = parseInt(obj.velocity.toFixed(0))
   }
 
-  console.log("AUGH!", fixData())
+  var test = fixData(obj)
+
+  console.log("AUGH!", typeof test)
 
   //var anObj = JSON.parse(data.body)
 
