@@ -1,6 +1,7 @@
 var xhr = require('xhr')
 var greeting = require('./views/greeting.hbs')
 var iss = require('./views/iss.hbs')
+var mapKey = process.env.GOOGLE_MAPS_API_KEY
 
 var endpoint = 'https://api.wheretheiss.at/v1/satellites/25544'
 
@@ -16,19 +17,16 @@ xhr.get(endpoint, function (err, data) {
   	object.name = object.name.toUpperCase()
   	object.altitude = parseInt(object.altitude.toFixed(0))
   	object.velocity = parseInt(object.velocity.toFixed(0))
+  	object.apikey = mapKey
   	return object
   }
 
-  var test = fixData(obj)
-
-  //console.log("AUGH!", typeof test)
-
-  //var anObj = JSON.parse(data.body)
+  var newObj = fixData(obj)
 
   // Replace 'Space' below with the response
   var target = document.getElementById('heading')
   target.innerHTML = greeting({name: ', person that is interested in science!'})
 
   var position = document.getElementById('content')
-  position.innerHTML = iss(test)
+  position.innerHTML = iss(newObj)
 })
