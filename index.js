@@ -4,7 +4,7 @@ var iss = require('./views/iss.hbs')
 
 var endpoint = 'https://api.wheretheiss.at/v1/satellites/25544'
 
-xhr.get(endpoint, function (err, data) {
+var run = xhr.get(endpoint, function (err, data) {
   if (err) {
     console.error(err)
   }
@@ -29,4 +29,12 @@ xhr.get(endpoint, function (err, data) {
 
   var position = document.getElementById('content')
   position.innerHTML = iss(newObj)
+
 })
+
+document.getElementById("btn").addEventListener("click", function(){
+    console.log("This worked, hooray!")
+    run()
+});
+
+
