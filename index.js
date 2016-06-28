@@ -1,9 +1,6 @@
 var xhr = require('xhr')
-var dotenv = require('dotenv')
-dotenv.load()
 var greeting = require('./views/greeting.hbs')
 var iss = require('./views/iss.hbs')
-var mapKey = process.env.GOOGLE_MAPS_API_KEY
 
 var endpoint = 'https://api.wheretheiss.at/v1/satellites/25544'
 
@@ -19,7 +16,7 @@ xhr.get(endpoint, function (err, data) {
   	object.name = object.name.toUpperCase()
   	object.altitude = parseInt(object.altitude.toFixed(0))
   	object.velocity = parseInt(object.velocity.toFixed(0))
-  	object.apikey = mapKey
+  	object.apikey = 'AIzaSyB9P4kGA3lSVTem-QY57vKuJmIO3iczpT4'
   	return object
   }
 
