@@ -27,5 +27,5 @@ xhr.get(endpoint, function (err, data) {
   target.innerHTML = greeting({name: ', person that is interested in science!'})
 
   var position = document.getElementById('content')
-  position.innerHTML = iss(fixData)
+  position.innerHTML = iss(fixData())
 })
