@@ -23,7 +23,7 @@ function doTheThing() {
     	return object
     }
 
-    console.log("BOING", fixData(obj))
+    //console.log("BOING", fixData(obj))
     var newObj = fixData(obj)
 
     // Replace 'Space' below with the response
@@ -36,8 +36,7 @@ function doTheThing() {
 }
 
 document.getElementById("btn").addEventListener("click", function(){
-    console.log("This worked, hooray!")
-    doTheThing()
+  doTheThing()
 });
 
 
