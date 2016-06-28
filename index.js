@@ -34,7 +34,8 @@ var run = xhr.get(endpoint, function (err, data) {
 
 document.getElementById("btn").addEventListener("click", function(){
     console.log("This worked, hooray!")
-    run()
+    console.log(typeof run)
+    return run
 });
 
 
