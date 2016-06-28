@@ -1,4 +1,6 @@
 var xhr = require('xhr')
+var dotenv = require('dotenv')
+dotenv.load()
 var greeting = require('./views/greeting.hbs')
 var iss = require('./views/iss.hbs')
 var mapKey = process.env.GOOGLE_MAPS_API_KEY
