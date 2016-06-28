@@ -11,7 +11,7 @@ xhr.get(endpoint, function (err, data) {
   }
 
   // In case you're curious
-  console.log("CLANG", data.body) // FYI: data.body is a string
+  //console.log("CLANG", data.body) // FYI: data.body is a string
   var obj = JSON.parse(data.body)
   var fixData = function (object) {
   	object.name = object.name.toUpperCase()
@@ -21,6 +21,7 @@ xhr.get(endpoint, function (err, data) {
   	return object
   }
 
+  console.log("BOING", fixData(obj))
   var newObj = fixData(obj)
 
   // Replace 'Space' below with the response
