@@ -13,14 +13,15 @@ xhr.get(endpoint, function (err, data) {
   console.log("CLANG", data.body) // FYI: data.body is a string
   var obj = JSON.parse(data.body)
   var fixData = function (object) {
-  	obj.name = obj.name.toUpperCase()
-  	obj.altitude = parseInt(obj.altitude.toFixed(0))
-  	obj.velocity = parseInt(obj.velocity.toFixed(0))
+  	object.name = object.name.toUpperCase()
+  	object.altitude = parseInt(object.altitude.toFixed(0))
+  	object.velocity = parseInt(object.velocity.toFixed(0))
+  	return object
   }
 
   var test = fixData(obj)
 
-  console.log("AUGH!", typeof test)
+  //console.log("AUGH!", typeof test)
 
   //var anObj = JSON.parse(data.body)
 
@@ -29,5 +30,5 @@ xhr.get(endpoint, function (err, data) {
   target.innerHTML = greeting({name: ', person that is interested in science!'})
 
   var position = document.getElementById('content')
-  position.innerHTML = iss(fixData(obj))
+  position.innerHTML = iss(test)
 })
